@@ -27,3 +27,6 @@
 <script src="{{asset('assets/js/config.js')}} "></script>
 {{-- fontawesome link --}}
 <script src="https://kit.fontawesome.com/ae6df88903.js" crossorigin="anonymous"></script>
+
+    {{-- For ckeditor --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js"></script>

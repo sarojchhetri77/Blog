@@ -10,8 +10,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $category = Category::latest()->paginate(5);
-        return view('backend.categories.index',compact('category'));
+        $categories = Category::latest()->paginate(5);
+        return view('backend.categories.index',compact('categories'));
     }
 
     public function store(Request $request)

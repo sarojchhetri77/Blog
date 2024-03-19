@@ -66,14 +66,14 @@
 
         {{-- for Blog --}}
         <li class="menu-item ">
-            <a href="" class="menu-link ">
+            <a href="{{route('admin.category.index')}}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-gift"></i>
                 <div data-i18n="Analytics">Categories</div>
             </a>
         </li>
         {{-- for category --}}
         <li class="menu-item ">
-            <a href="" class="menu-link ">
+            <a href="{{route('admin.blog.index')}}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-gift"></i>
                 <div data-i18n="Analytics">Blog</div>
             </a>

@@ -12,6 +12,6 @@ class Category extends Model
        'title'
     ];
     public function blogs(){
-        return $this->hasMany(blogs::class);
+        return $this->hasMany(Blogs::class);
     }
 }
