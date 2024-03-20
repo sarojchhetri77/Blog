@@ -1,7 +1,17 @@
 @extends('backend.layouts.main')
 @section('page-title', 'Blog Edit')
 @section('main-content')
-   
+<div>
+    <h4 class="page-title text-left">Blog Management</h4>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a>
+        </li>
+        <li class="breadcrumb-item"><a href="{{route('admin.blog.index')}}">Blog</a>
+        </li>
+        <li class="breadcrumb-item active text-primary"><a href="javascript:void(0);">Blog Edit</a></li>
+
+    </ol>
+</div>
     <div class="p-1">
         <a class="btn btn-primary btn-sm " href="{{ route('admin.blog.index') }}"><i class="fa-solid fa-eye px-1"></i>view </a>
     </div>
@@ -48,7 +58,7 @@
                             <div class="col-sm-10">
                                 <select class="form-control" name="category_id">
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                        <option value="{{ $category->id }}" @selected($category->id == $blog->category_id)>{{ $category->title }}</option>
                                     @endforeach
                                 </select>
                                 @error('category_id')
@@ -59,9 +69,8 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label" for="basic-default-email">Description</label>
                             <div class="col-sm-10">
-                                <div class="input-group input-group-merge">
-                                    <textarea name="description" class="form-control" id="" cols="5" rows="5">{{$blog->description}}</textarea>
-                                </div>
+                                    <textarea name="description" class="form-control" id="description" cols="5" rows="5">{{$blog->description}}</textarea>
+                                
                                 @error('description')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror

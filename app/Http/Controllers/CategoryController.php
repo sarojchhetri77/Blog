@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::latest()->paginate(5);
+        $categories = Category::latest()->paginate(3);
         return view('backend.categories.index', compact('categories'));
     }
 
@@ -29,21 +29,23 @@ class CategoryController extends Controller
         $category->title = $request->title;
         $category->slug = $slug;
         $category->save();
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.category.index')->with('success', 'category created sucessfully');;
     }
 
     public function update(Request $request, $id)
     {
         $category = Category::findorFail($id);
         if (is_null($category)) {
-            return redirect()->route('admin.category.index');
+            return redirect()->route('admin.category.index')->with('error', 'category Not Found');;
         } else {
             $request->validate([
-                'title' => 'required|string|max:255'
+                'title' => 'required|string|max:255',
+                'slug' => 'required|string',
             ]);
             $category->title = $request->title;
+            $category->slug = $request->slug;
             $category->update();
-            return redirect()->route('admin.category.index');
+            return redirect()->route('admin.category.index')->with('success', 'Category Update sucessfully');;
         }
     }
 
@@ -51,12 +53,12 @@ class CategoryController extends Controller
     {
         $category = Category::findorFail($id);
         if (is_null($category)) {
-            return redirect()->route('admin.category.index');
+            return redirect()->route('admin.category.index')->with('error', 'category not Found');;
         } else {
 
             $category->blogs()->delete();
             $category->delete();
-            return redirect()->route('admin.category.index');
+            return redirect()->route('admin.category.index')->with('success', 'category deleted sucessfully');;
         }
     }
 }

@@ -30,3 +30,8 @@
 
     {{-- For ckeditor --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js"></script>
+    <script>
+      setTimeout(function() {
+          document.getElementById('successAlert').remove();
+      }, 2000);
+  </script>

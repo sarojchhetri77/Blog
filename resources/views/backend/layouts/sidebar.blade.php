@@ -45,7 +45,7 @@
                     </g>
                 </svg>
             </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2">Sneat</span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2">Blogging</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -57,7 +57,7 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboards -->
-        <li class="menu-item {{ request()->routeIs('admin/dashboard') ? 'active' : '' }}">
+        <li class="menu-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
             <a href="{{ route('admin.dashboard') }}" class="menu-link ">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -65,16 +65,16 @@
         </li>
 
         {{-- for Blog --}}
-        <li class="menu-item ">
+        <li class="menu-item  {{ request()->routeIs('admin.category*') ? 'active' : '' }}">
             <a href="{{route('admin.category.index')}}" class="menu-link ">
-                <i class="menu-icon tf-icons bx bx-gift"></i>
+                <i class="menu-icon bx bx-category"></i>
                 <div data-i18n="Analytics">Categories</div>
             </a>
         </li>
         {{-- for category --}}
-        <li class="menu-item ">
+        <li class="menu-item  {{ request()->routeIs('admin.blog*') ? 'active' : '' }}">
             <a href="{{route('admin.blog.index')}}" class="menu-link ">
-                <i class="menu-icon tf-icons bx bx-gift"></i>
+                <i class="menu-icon bx bx-news"></i>
                 <div data-i18n="Analytics">Blog</div>
             </a>
         </li>

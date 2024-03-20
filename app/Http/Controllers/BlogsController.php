@@ -11,7 +11,7 @@ class BlogsController extends Controller
 
     public function index()
     {
-        $blogs = Blogs::with('category')->paginate(10);
+        $blogs = Blogs::with('category')->paginate(7);
         return view('backend.blogs.index', compact('blogs'));
     }
 
@@ -52,7 +52,7 @@ class BlogsController extends Controller
                 'category_id' => $request->category_id,
             ]);
         }
-        return redirect()->route('admin.blog.index');
+        return redirect()->route('admin.blog.index')->with('success', 'Blogs created sucessfully');
     }
 
     public function update(Request $request, $id)
@@ -74,7 +74,7 @@ class BlogsController extends Controller
         $blog->description = $request->description;
         $blog->category_id = $request->category_id;
         $blog->update();
-        return redirect()->route('admin.blog.index');
+        return redirect()->route('admin.blog.index')->with('success', 'Blogs Update sucessfully');
 
     }
 
@@ -82,7 +82,7 @@ class BlogsController extends Controller
         $blog = Blogs::findorFail($id);
         unlink(public_path('uploads/' . $blog->image));
         $blog->delete();
-        return redirect()->route('admin.blog.index');
+        return redirect()->route('admin.blog.index')->with('success', 'Blog Deleted sucessfully');;
         
     }
 

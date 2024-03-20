@@ -1,6 +1,26 @@
 @extends('backend.layouts.main')
 @section('page-title', 'Blog view')
 @section('main-content')
+<div>
+    <h4 class="page-title text-left">Blog Management</h4>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a>
+        </li>
+        <li class="breadcrumb-item"><a href="{{route('admin.blog.index')}}">Blog</a>
+        </li>
+        <li class="breadcrumb-item active text-primary"><a href="javascript:void(0);">Blog View</a></li>
+
+    </ol>
+</div>
+@if (session('success'))
+    <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="text-dark">{{ session('success') }}</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+@endif
+
     <div class="p-1">
         <a class="btn btn-primary btn-sm " href="{{ route('admin.blog.create') }}"><i class="fa-solid fa-plus px-1"></i>Add</a>
     </div>
@@ -30,7 +50,7 @@
                                 <td>
                                     <a class="btn btn-primary btn-sm " href="{{ route('admin.blog.show',$blog->id) }}"><i
                                             class="fa-solid fa-eye"></i></a>
-                                    <a class="btn btn-primary btn-sm " href="{{ route('admin.blog.edit', $blog->id) }}"><i
+                                    <a class="btn btn-success btn-sm " href="{{ route('admin.blog.edit', $blog->id) }}"><i
                                             class="fa-solid fa-edit"></i></a>
                                     <form class="d-inline" action="{{ route('admin.blog.destroy', $blog->id) }}"
                                         method="POST">
@@ -53,5 +73,8 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="p-2">
+        {{ $blogs->links() }}
     </div>
 @endsection

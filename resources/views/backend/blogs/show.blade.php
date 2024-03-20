@@ -1,9 +1,20 @@
 @extends('backend.layouts.main')
 @section('page-title', 'Blog Create')
 @section('main-content')
+    <div>
+        <h4 class="page-title text-left">Blog Management</h4>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a>
+            </li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.blog.index') }}">Blog</a>
+            </li>
+            <li class="breadcrumb-item active text-primary"><a href="javascript:void(0);">Blog view</a></li>
 
+        </ol>
+    </div>
     <div class="p-1">
-        <a class="btn btn-primary btn-sm " href="{{ route('admin.blog.index') }}"><i class="fa-solid fa-eye px-1"></i>view </a>
+        <a class="btn btn-primary btn-sm " href="{{ route('admin.blog.index') }}"><i class="fa-solid fa-eye px-1"></i>view
+        </a>
     </div>
     <div class="card">
         <div class="col-xxl">
@@ -33,9 +44,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-default-email">Description</label>
                         <div class="col-sm-10">
-                            <div class="input-group input-group-merge">
-                                <textarea class="form-control" id="" cols="5" rows="5" @disabled(true)>{{ $blog->description }}</textarea>
-                            </div>
+                            <textarea class="form-control" id="description" cols="5" rows="5" @disabled(true)>{{ $blog->description }}</textarea>
                         </div>
                     </div>
                 </div>
