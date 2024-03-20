@@ -20,7 +20,7 @@ A web application for managing blogs and categories.
     composer update
 
 3. Set up the environment variables:
-    copy .env.example and paste and rename .env
+    copy .env.example and paste and rename .env:
    php artisan key:generate
 
 4. Configure the database in the `.env` file.
